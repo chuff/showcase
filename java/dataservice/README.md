@@ -1,6 +1,6 @@
 # dataservice
 
-** Microservice Template **
+Microservice Template
 
 ### Technologies
 - Java 17
