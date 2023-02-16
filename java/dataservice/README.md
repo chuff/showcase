@@ -2,7 +2,7 @@
 
 Microservice Template
 
-### Technologies
+## Technologies
 - Java 17
 - Maven
 - Spring Boot
@@ -13,7 +13,7 @@ Microservice Template
 - H2
 - Docker
 
-### Running In Docker
+## Running In Docker
 > make run 
 
 This will build and launch the application configured to run along side a MySQL docker container.
@@ -23,7 +23,7 @@ This will build and launch the application configured to run along side a MySQL 
 
 This will build and launch the application configured to run with an in-memory H2 database.
 
-### Run Test Suite
+## Run Test Suite
 > make test 
 
 This runs a suite of functional tests against the gRPC and REST endpoints
