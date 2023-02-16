@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+  dataservice:
+    hostname: "dataservice.thehuffs.local"
+    image: "thehuffs/dataservice:0.1.0-SNAPSHOT"
+    environment:
+      - SPRING_PROFILES_ACTIVE=compose
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+      - "8082:8082"
+  mysql:
+    hostname: "mysql.thehuffs.local"
+    image: "mysql:8.0.32"
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+    ports:
+      - "3306:3306"
+networks:
+  default:
+    driver: bridge

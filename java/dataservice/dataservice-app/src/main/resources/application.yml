@@ -1,0 +1,61 @@
+server:
+  port: 8080
+  error:
+    includestacktrace: ALWAYS
+    whitelabel:
+      enabled: true
+grpc:
+  server:
+    port: 8081
+    address: 0.0.0.0
+management:
+  server:
+    port: 8082
+  endpoint:
+    health:
+      probes:
+        enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: info,health,loggers,jolokia,prometheus
+      base-path: /
+
+spring:
+  application:
+    name: dataservice
+  profiles:
+    active: @spring.profiles.active@
+
+
+---
+spring:
+  profiles: local
+  datasource:
+    driverClassName: org.h2.Driver
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password: password
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+    spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
+  properties:
+    hibernate:
+      format_sql: true
+---
+spring:
+  profiles: compose
+  datasource:
+    url: jdbc:mysql://mysql.thehuffs.local:3306/dataservice?createDatabaseIfNotExist=true
+    username: root
+    password: 
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+

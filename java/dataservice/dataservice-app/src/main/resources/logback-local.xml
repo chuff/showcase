@@ -1,0 +1,16 @@
+<included>
+  <springProperty name="application" source="spring.application.name" />
+
+  <appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%d{HH:mm:ss.SSS} %thread %level %logger - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <logger name="net.thehuffs.showcase.dataservice" level="DEBUG"/>
+  <logger name="org.hibernate.SQL" level="DEBUG"/>
+  
+  <root level="INFO">
+    <appender-ref ref="consoleAppender" />
+  </root>
+</included>
