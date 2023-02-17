@@ -17,6 +17,11 @@ services:
       - MYSQL_ALLOW_EMPTY_PASSWORD=true
     ports:
       - "3306:3306"
+  redis:
+    hostname: "redis.thehuffs.local"
+    image: "redis:7.0.8"
+    ports:
+      - "6379:6379"
 networks:
   default:
     driver: bridge

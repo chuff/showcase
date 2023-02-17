@@ -5,6 +5,9 @@ import java.util.Optional;
 import java.util.UUID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import net.thehuffs.showcase.dataservice.entity.FooEntity;
 import net.thehuffs.showcase.dataservice.mapper.FooMapper;
@@ -22,6 +25,7 @@ public class FooService {
     this.fooJpaRepository = fooJpaRepository;
   }
 
+  @Cacheable(value = "foo", key = "#id")
   public Optional<Foo> findById(String id) {
     Optional<FooEntity> optionalEntity = fooJpaRepository.findById(UUID.fromString(id));
     if (optionalEntity.isEmpty()) {
@@ -66,6 +70,7 @@ public class FooService {
     return protoIterable.iterator();
   }
 
+  @CachePut(value = "foo", key = "#result.id")
   public Foo create(Foo proto) {
     FooEntity entity = new FooEntity();
     FooMapper.protoToEntity(proto, entity);
@@ -77,6 +82,7 @@ public class FooService {
     return proto;
   }
 
+  @CachePut(value = "foo", key = "#result.id")
   public Optional<Foo> update(Foo proto) {
     String id = proto.getId();
     Optional<FooEntity> optionalEntity = fooJpaRepository.findById(UUID.fromString(id));
@@ -98,6 +104,7 @@ public class FooService {
     }
   }
 
+  @CacheEvict(value = "foo", key = "#id")
   public void delete(String id) {
     fooJpaRepository.deleteById(UUID.fromString(id));
     logger.debug("foo " + id + " deleted from db");

@@ -58,4 +58,7 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+  redis:
+    host: redis.thehuffs.local
+    port: 6379
 
