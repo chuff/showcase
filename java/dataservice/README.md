@@ -11,6 +11,8 @@ Microservice Template
 - JPA
 - MySQL
 - H2
+- Caffeine
+- Redis
 - Docker
 
 ## Running In Docker
