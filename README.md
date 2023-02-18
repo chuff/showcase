@@ -1,3 +1,3 @@
 # showcase
 
-- [dataservice](java/dataservice)  - A microservice template using Java 17, Spring Boot, JPA, gRPC, REST, Caffine, Redis, MySQL, H2, and Docker
+- [dataservice](java/dataservice)  - A microservice template using - Java 17, Maven, Spring Boot, gRPC, REST, JPA, MySQL, H2, Caffeine, Redis, Docker
