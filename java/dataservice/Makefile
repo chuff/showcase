@@ -6,7 +6,6 @@ stop:
 	docker compose down --remove-orphans
 
 run: build stop
-	docker compose down --remove-orphans
 	docker compose run --service-ports -d mysql
 	docker compose run --service-ports -d redis
 	sleep 10
